@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#F5F1E4">
+<title>CiscoHub — Belajar Cisco Networking dari Nol</title>
+<meta name="description" content="Website belajar dasar jaringan Cisco: VLAN, Trunk, Inter-VLAN Routing, DHCP, ACL, Routing, dan Troubleshooting. Lengkap dengan catatan, contoh konfigurasi, dan lab tracker.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="CiscoHub — Belajar Cisco Networking dari Nol">
+<meta property="og:description" content="8 modul praktik Cisco IOS: VLAN, Trunk, Inter-VLAN Routing, DHCP, ACL, Routing, dan Troubleshooting. Gratis, offline-ready, progres tersimpan otomatis.">
+<meta property="og:image" content="/assets/img/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CiscoHub — Belajar Cisco Networking dari Nol">
+<meta name="twitter:description" content="8 modul praktik Cisco IOS, gratis dan offline-ready, dengan lab tracker otomatis.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2315130C'/%3E%3Ccircle cx='50' cy='50' r='16' fill='%23FFD400'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2315130C'/%3E%3Ccircle cx='50' cy='50' r='22' fill='%23FFD400'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./assets/css/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js" defer></script>
+</head>
+<body data-active="home">
+<div class="grid-veil"></div>
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <div>
+    <div class="topbar" id="topbar"></div>
+
+    <main id="main-content">
+      <section class="hero">
+        <div class="hero-kicker">// modul praktik jaringan cisco — untuk pemula</div>
+        <h1>Belajar Cisco dari nol, <em>langsung praktik</em> bukan cuma teori.</h1>
+        <p class="lead">
+          8 modul terstruktur dari CLI dasar sampai troubleshooting, tiap modul ada
+          catatan, contoh konfigurasi siap-copy, dan checklist lab yang progresnya
+          otomatis tersimpan di browser kamu.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="./pages/01-basic.html">Mulai dari Modul 01 →</a>
+          <a class="btn btn-ghost" href="./pages/notes.html">Lihat Cheat Sheet</a>
+        </div>
+
+        <div class="term tick-corners">
+          <div class="term-bar"><i></i><i></i><i></i><span>SW1 — console</span></div>
+          <div class="term-body" id="bootTerm"></div>
+        </div>
+      </section>
+
+      <div class="stats">
+        <div class="stat"><b>8</b><span>MODUL PRAKTIK</span></div>
+        <div class="stat"><b>3</b><span>DOKUMEN REFERENSI</span></div>
+        <div class="stat"><b id="statDone">0/8</b><span>MODUL SELESAI</span></div>
+        <div class="stat"><b>100%</b><span>GRATIS &amp; OFFLINE-READY</span></div>
+      </div>
+
+      <div class="section-head">
+        <h2>Rack modul praktik</h2>
+        <span class="n">urutan disarankan: 01 → 08</span>
+      </div>
+      <p class="muted" style="margin-top:-6px;font-size:13.5px;">
+        Tiap kartu = 1 "port" pembelajaran. Titik LED menyala kuning kalau sedang
+        dikerjakan, cyan kalau semua checklist modul sudah selesai.
+      </p>
+      <div class="rack-grid" id="rackGrid"></div>
+
+      <div class="section-head">
+        <h2>Referensi cepat</h2>
+      </div>
+      <div class="rack-grid" style="margin-bottom:10px;">
+        <a class="rack-card" href="./pages/notes.html">
+          <div class="rc-top"><span class="rc-num">📒 notes/</span></div>
+          <h3>Cheat Sheet Perintah</h3>
+          <p>Semua perintah penting modul 01-08 diringkas dalam satu halaman, plus tabel subnetting.</p>
+          <span class="rc-status">BUKA</span>
+        </a>
+        <a class="rack-card" href="./pages/configs.html">
+          <div class="rc-top"><span class="rc-num">🗂 configs/</span></div>
+          <h3>Contoh Konfigurasi Siap Pakai</h3>
+          <p>Template switch, router, dan gabungan 1 lab utuh — tinggal sesuaikan IP/VLAN.</p>
+          <span class="rc-status">BUKA</span>
+        </a>
+        <a class="rack-card" href="./pages/topology.html">
+          <div class="rc-top"><span class="rc-num">🧭 topology/</span></div>
+          <h3>Panduan Desain Topologi</h3>
+          <p>Cara merancang lab Packet Tracer yang rapi + IP addressing plan contoh.</p>
+          <span class="rc-status">BUKA</span>
+        </a>
+      </div>
+
+      <div class="panel">
+        <h2><span class="tag">readme</span>Cara pakai website ini</h2>
+        <ol style="padding-left:20px;color:var(--text);">
+          <li style="margin-bottom:8px;">Buka modul secara berurutan lewat sidebar kiri (bisa dibuka lewat ikon ☰ di HP).</li>
+          <li style="margin-bottom:8px;">Baca tab <b>Teori</b>, coba sendiri perintah di tab <b>Config CLI</b> pada Packet Tracer / GNS3 kamu.</li>
+          <li style="margin-bottom:8px;">Centang tab <b>Checklist Lab</b> tiap selesai satu tugas praktik — progres otomatis tersimpan di browser (localStorage), tidak perlu login.</li>
+          <li>Lupa sintaks di tengah praktik? Buka <a href="./pages/notes.html" style="color:var(--cyan);">Cheat Sheet</a> yang merangkum semua modul dalam 1 halaman.</li>
+        </ol>
+      </div>
+    </main>
+
+    <footer class="site-foot">
+      CiscoHub — dibuat untuk belajar mandiri jaringan Cisco (setara materi awal CCNA).
+      Seluruh materi berupa file <code>.md</code> / <code>.cfg</code> polos di folder <code>/cisco</code>,
+      jadi bisa dibaca langsung di GitHub tanpa harus buka website ini.
+    </footer>
+  </div>
+</div>
+
+<script src="./assets/js/main.js"></script>
+<script>
+  initPage("home");
+  renderRackGrid("#rackGrid");
+  document.getElementById("statDone").textContent =
+    (() => {
+      let d = 0;
+      MODULES.forEach(m => {
+        const meta = JSON.parse(localStorage.getItem("cisco-meta-" + m.id) || "null");
+        const done = getProgress(m.id).length;
+        if (meta && meta.total && done >= meta.total) d++;
+      });
+      return d + "/" + MODULES.length;
+    })();
+
+  bootTerminal("#bootTerm", [
+    { text: "Switch1>enable", cls: "g" },
+    { text: "Switch1#configure terminal", cls: "g" },
+    { text: "Switch1(config)#hostname SW1", pause: 260 },
+    { text: "SW1(config)#vlan 10", pause: 200 },
+    { text: "SW1(config-vlan)#name DATA", pause: 260 },
+    { text: "SW1(config)#interface fa0/1", pause: 200 },
+    { text: "SW1(config-if)#switchport mode access", pause: 200 },
+    { text: "SW1(config-if)#switchport access vlan 10", pause: 320 },
+    { text: "SW1(config-if)#end", pause: 200 },
+    { text: "SW1#write memory", pause: 260 },
+    { text: "Building configuration...\n[OK]", pause: 0 },
+  ]);
+</script>
+</body>
+</html>

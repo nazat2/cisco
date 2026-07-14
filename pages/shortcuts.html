@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#F5F1E4">
+<title>Shortcut CLI — CiscoHub</title>
+<meta name="description" content="Kumpulan shortcut perintah Cisco IOS, singkatan interface, dan shortcut keyboard terminal.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2315130C'/%3E%3Ccircle cx='50' cy='50' r='16' fill='%23FFD400'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js" defer></script>
+</head>
+<body data-active="shortcuts">
+<div class="grid-veil"></div>
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div>
+    <div class="topbar" id="topbar"></div>
+    <main id="main-content">
+      <div class="eyebrow">referensi — shortcuts/</div>
+      <h1 class="page-title">Shortcut Perintah Cisco IOS</h1>
+      <p class="page-sub">Klik kartu perintah untuk copy langsung ke clipboard. Berguna buat latihan cepat di CLI/Packet Tracer.</p>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="cmd">Perintah CLI</button>
+        <button class="tab-btn" data-tab="iface">Singkatan Interface</button>
+        <button class="tab-btn" data-tab="key">Shortcut Keyboard</button>
+      </div>
+      <div>
+        <div class="tab-panel active" data-panel="cmd">
+          <div class="panel">
+            <h2><span class="tag">mode &amp; interface</span>Masuk mode konfigurasi</h2>
+            <div class="shortcut-grid" data-group="cmd-mode"></div>
+          </div>
+          <div class="panel">
+            <h2><span class="tag">ip &amp; port</span>Alamat &amp; status port</h2>
+            <div class="shortcut-grid" data-group="cmd-ip"></div>
+          </div>
+          <div class="panel">
+            <h2><span class="tag">show</span>Perintah cek status</h2>
+            <div class="shortcut-grid" data-group="cmd-show"></div>
+          </div>
+          <div class="panel">
+            <h2><span class="tag">simpan</span>Simpan &amp; salin config</h2>
+            <div class="shortcut-grid" data-group="cmd-save"></div>
+          </div>
+          <div class="panel">
+            <h2><span class="tag">navigasi mode</span>Keluar / pindah mode</h2>
+            <div class="shortcut-grid" data-group="cmd-nav"></div>
+          </div>
+        </div>
+
+        <div class="tab-panel" data-panel="iface">
+          <div class="panel">
+            <h2><span class="tag">alias</span>Singkatan nama interface</h2>
+            <div class="shortcut-grid" data-group="iface"></div>
+          </div>
+        </div>
+
+        <div class="tab-panel" data-panel="key">
+          <div class="panel">
+            <h2><span class="tag">terminal</span>Shortcut keyboard di CLI</h2>
+            <div class="shortcut-grid" data-group="key"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="site-foot">
+      Klik kartu untuk copy perintahnya. Shortcut keyboard cuma referensi, ga bisa di-copy.
+    </footer>
+  </div>
+</div>
+<script src="../assets/js/main.js"></script>
+<script>
+  initPage("shortcuts");
+
+  const SHORTCUT_DATA = {
+    "cmd-mode": [
+      { cmd: "en", desc: "enable" },
+      { cmd: "conf t", desc: "configure terminal" },
+      { cmd: "int", desc: "interface" },
+      { cmd: "int fa0/1", desc: "interface fastethernet 0/1" },
+      { cmd: "int g0/0", desc: "interface gigabitethernet 0/0" },
+      { cmd: "int s0/0/0", desc: "interface serial 0/0/0" },
+    ],
+    "cmd-ip": [
+      { cmd: "ip add", desc: "ip address" },
+      { cmd: "no shut", desc: "no shutdown" },
+      { cmd: "shut", desc: "shutdown" },
+      { cmd: "desc", desc: "description" },
+    ],
+    "cmd-show": [
+      { cmd: "show run", desc: "show running-config" },
+      { cmd: "show start", desc: "show startup-config" },
+      { cmd: "show ip int br", desc: "show ip interface brief" },
+      { cmd: "show int", desc: "show interfaces" },
+      { cmd: "show vlan br", desc: "show vlan brief" },
+      { cmd: "show mac add", desc: "show mac address-table" },
+      { cmd: "show cdp nei", desc: "show cdp neighbors" },
+      { cmd: "show ver", desc: "show version" },
+      { cmd: "show flash", desc: "show flash" },
+      { cmd: "show clock", desc: "show clock" },
+    ],
+    "cmd-save": [
+      { cmd: "copy run start", desc: "copy running-config startup-config" },
+      { cmd: "wr", desc: "write memory" },
+    ],
+    "cmd-nav": [
+      { cmd: "do", desc: "Menjalankan perintah EXEC dari mode konfigurasi" },
+      { cmd: "exit", desc: "Keluar satu level" },
+      { cmd: "end", desc: "Langsung ke mode Privileged EXEC (#)" },
+      { cmd: "reload", desc: "Restart perangkat" },
+      { cmd: "erase startup-config", desc: "Hapus startup-config" },
+    ],
+    "iface": [
+      { cmd: "fa", desc: "FastEthernet" },
+      { cmd: "gi", desc: "GigabitEthernet" },
+      { cmd: "te", desc: "TenGigabitEthernet" },
+      { cmd: "se", desc: "Serial" },
+      { cmd: "lo", desc: "Loopback" },
+      { cmd: "vl", desc: "VLAN" },
+    ],
+    "key": [
+      { cmd: "Tab", desc: "Melengkapi perintah otomatis", noCopy: true },
+      { cmd: "?", desc: "Menampilkan bantuan", noCopy: true },
+      { cmd: "↑", desc: "Perintah sebelumnya", noCopy: true },
+      { cmd: "↓", desc: "Perintah berikutnya", noCopy: true },
+      { cmd: "Ctrl + A", desc: "Ke awal baris", noCopy: true },
+      { cmd: "Ctrl + E", desc: "Ke akhir baris", noCopy: true },
+      { cmd: "Ctrl + U", desc: "Hapus satu baris", noCopy: true },
+      { cmd: "Ctrl + W", desc: "Hapus satu kata", noCopy: true },
+      { cmd: "Ctrl + Z", desc: "Kembali ke mode Privileged EXEC (#)", noCopy: true },
+      { cmd: "Ctrl + C", desc: "Membatalkan proses", noCopy: true },
+      { cmd: "Ctrl + Shift + 6", desc: "Menghentikan ping/traceroute", noCopy: true },
+    ],
+  };
+
+  function renderGroup(groupId, items) {
+    const el = document.querySelector('.shortcut-grid[data-group="' + groupId + '"]');
+    if (!el) return;
+    el.innerHTML = items.map(it => `
+      <button type="button" class="shortcut-row ${it.noCopy ? "static" : ""}" ${it.noCopy ? "" : `data-copy="${it.cmd.replace(/"/g, "&quot;")}"`}>
+        <code class="shortcut-cmd">${it.cmd}</code>
+        <span class="shortcut-desc">${it.desc}</span>
+        ${it.noCopy ? "" : `<span class="shortcut-copy-hint">copy</span>`}
+      </button>
+    `).join("");
+  }
+
+  Object.keys(SHORTCUT_DATA).forEach(g => renderGroup(g, SHORTCUT_DATA[g]));
+
+  document.querySelectorAll(".shortcut-row[data-copy]").forEach(row => {
+    row.addEventListener("click", () => {
+      const text = row.getAttribute("data-copy");
+      const hint = row.querySelector(".shortcut-copy-hint");
+      const finish = () => {
+        row.classList.add("copied");
+        if (hint) hint.textContent = "disalin!";
+        setTimeout(() => {
+          row.classList.remove("copied");
+          if (hint) hint.textContent = "copy";
+        }, 900);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(finish).catch(finish);
+      } else {
+        finish();
+      }
+    });
+  });
+</script>
+</body>
+</html>

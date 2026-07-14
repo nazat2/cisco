@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" font-family="monospace">
+  <rect width="900" height="420" fill="#0B1220"/>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#4FD8C4"/>
+    </marker>
+  </defs>
+
+  <!-- Router -->
+  <rect x="400" y="30" width="100" height="50" rx="8" fill="#16213A" stroke="#4FD8C4" stroke-width="1.5"/>
+  <text x="450" y="60" fill="#E8EDF5" font-size="13" text-anchor="middle">R1</text>
+
+  <!-- Switch distribution -->
+  <rect x="400" y="150" width="100" height="50" rx="8" fill="#16213A" stroke="#8B93FF" stroke-width="1.5"/>
+  <text x="450" y="180" fill="#E8EDF5" font-size="13" text-anchor="middle">SW1 (trunk)</text>
+
+  <!-- Switch access -->
+  <rect x="220" y="270" width="100" height="50" rx="8" fill="#16213A" stroke="#8B93FF" stroke-width="1.5"/>
+  <text x="270" y="300" fill="#E8EDF5" font-size="13" text-anchor="middle">SW2</text>
+  <rect x="580" y="270" width="100" height="50" rx="8" fill="#16213A" stroke="#8B93FF" stroke-width="1.5"/>
+  <text x="630" y="300" fill="#E8EDF5" font-size="13" text-anchor="middle">SW3</text>
+
+  <!-- PCs VLAN10 -->
+  <rect x="130" y="360" width="60" height="40" rx="6" fill="#121B2E" stroke="#F4A340"/>
+  <text x="160" y="384" fill="#E8EDF5" font-size="11" text-anchor="middle">PC1</text>
+  <rect x="210" y="360" width="60" height="40" rx="6" fill="#121B2E" stroke="#F4A340"/>
+  <text x="240" y="384" fill="#E8EDF5" font-size="11" text-anchor="middle">PC2</text>
+
+  <!-- PCs VLAN20 -->
+  <rect x="580" y="360" width="60" height="40" rx="6" fill="#121B2E" stroke="#F4A340"/>
+  <text x="610" y="384" fill="#E8EDF5" font-size="11" text-anchor="middle">PC3</text>
+  <rect x="660" y="360" width="60" height="40" rx="6" fill="#121B2E" stroke="#F4A340"/>
+  <text x="690" y="384" fill="#E8EDF5" font-size="11" text-anchor="middle">PC4</text>
+
+  <!-- Links -->
+  <line x1="450" y1="80" x2="450" y2="150" stroke="#4FD8C4" stroke-width="1.5"/>
+  <line x1="420" y1="200" x2="280" y2="270" stroke="#8B93FF" stroke-width="1.5"/>
+  <line x1="480" y1="200" x2="620" y2="270" stroke="#8B93FF" stroke-width="1.5"/>
+  <line x1="250" y1="320" x2="160" y2="360" stroke="#5D7096"/>
+  <line x1="270" y1="320" x2="240" y2="360" stroke="#5D7096"/>
+  <line x1="610" y1="320" x2="610" y2="360" stroke="#5D7096"/>
+  <line x1="640" y1="320" x2="690" y2="360" stroke="#5D7096"/>
+
+  <text x="450" y="20" fill="#8CA0C0" font-size="12" text-anchor="middle">Contoh topologi: Router-on-a-Stick + 2 VLAN</text>
+</svg>

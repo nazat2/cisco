@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#F5F1E4">
+<title>Basic CLI Cisco IOS — CiscoHub</title>
+<meta name="description" content="Belajar mode CLI, hostname, password, dan menyimpan konfigurasi Cisco IOS.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2315130C'/%3E%3Ccircle cx='50' cy='50' r='16' fill='%23FFD400'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js" defer></script>
+</head>
+<body data-active="01_basic">
+<div class="grid-veil"></div>
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <div>
+    <div class="topbar" id="topbar"></div>
+
+    <main id="main-content">
+      <div class="eyebrow">modul 01 / 08 — Gi0/1</div>
+      <h1 class="page-title">Basic CLI Cisco IOS</h1>
+      <p class="page-sub">Fondasi sebelum semua modul lain — mode CLI &amp; perintah dasar. &nbsp;·&nbsp; <span id="progressBadge">0/5 tugas selesai</span></p>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="teori">Teori</button>
+        <button class="tab-btn" data-tab="config">Config CLI</button>
+        <button class="tab-btn" data-tab="checklist">Checklist Lab</button>
+      </div>
+
+      <div>
+        <div class="tab-panel active" data-panel="teori">
+          <div class="panel">
+            <div class="md" id="mdArea"></div>
+          </div>
+        </div>
+
+        <div class="tab-panel" data-panel="config">
+          <div class="panel">
+            <h2><span class="tag">config-sample.cfg</span>Contoh konfigurasi</h2>
+            <p class="muted" style="font-size:13px;margin-bottom:14px;">Salin lalu sesuaikan hostname/IP/VLAN dengan topologi labmu sendiri.</p>
+            <div id="codeArea"></div>
+          </div>
+        </div>
+
+        <div class="tab-panel" data-panel="checklist">
+          <div class="panel">
+            <h2><span class="tag">lab tasks</span>Checklist praktik</h2>
+            <ul class="checklist" data-module="01_basic">
+              <li>
+                <input type="checkbox" id="01_basic_t1" data-task="t1">
+                <label for="01_basic_t1">
+                  <div class="task-title">Masuk ke Privileged EXEC & Global Config</div>
+                  <div class="task-desc">Praktikkan enable → configure terminal pada switch di Packet Tracer.</div>
+                </label>
+              </li>
+              <li>
+                <input type="checkbox" id="01_basic_t2" data-task="t2">
+                <label for="01_basic_t2">
+                  <div class="task-title">Set hostname dan enable secret</div>
+                  <div class="task-desc">Ganti hostname jadi SW1 dan set enable secret cisco123.</div>
+                </label>
+              </li>
+              <li>
+                <input type="checkbox" id="01_basic_t3" data-task="t3">
+                <label for="01_basic_t3">
+                  <div class="task-title">Konfigurasi banner MOTD</div>
+                  <div class="task-desc">Buat pesan peringatan yang muncul saat login.</div>
+                </label>
+              </li>
+              <li>
+                <input type="checkbox" id="01_basic_t4" data-task="t4">
+                <label for="01_basic_t4">
+                  <div class="task-title">Simpan konfigurasi</div>
+                  <div class="task-desc">Jalankan copy running-config startup-config, lalu reload dan pastikan konfigurasi tidak hilang.</div>
+                </label>
+              </li>
+              <li>
+                <input type="checkbox" id="01_basic_t5" data-task="t5">
+                <label for="01_basic_t5">
+                  <div class="task-title">Verifikasi dengan show</div>
+                  <div class="task-desc">Jalankan show version dan show ip interface brief, pahami outputnya.</div>
+                </label>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+        <a class="btn btn-ghost" href="../index.html">← Kembali ke Overview</a>
+        <a class="btn btn-primary" href="02-vlan.html">Modul 02: VLAN — Virtual LAN →</a>
+      </div>
+    </main>
+
+    <footer class="site-foot">
+      Materi mentah modul ini ada di <code>/cisco/01_basic/</code> (notes.md, config-sample.cfg, README.md) — bisa dibaca langsung di GitHub.
+    </footer>
+  </div>
+</div>
+
+<script src="../assets/js/main.js"></script>
+<script>
+  initPage("01_basic");
+  loadMarkdown("../cisco/01_basic/notes.md", "#mdArea");
+  loadCode("../cisco/01_basic/config-sample.cfg", "#codeArea", "01_basic/config-sample.cfg");
+  initChecklist("01_basic");
+</script>
+</body>
+</html>

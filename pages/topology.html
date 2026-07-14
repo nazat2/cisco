@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#F5F1E4">
+<title>Panduan Topologi — CiscoHub</title>
+<meta name="description" content="Cara mendesain topologi lab Packet Tracer yang rapi, plus IP addressing plan contoh.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2315130C'/%3E%3Ccircle cx='50' cy='50' r='16' fill='%23FFD400'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js" defer></script>
+</head>
+<body data-active="topology">
+<div class="grid-veil"></div>
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div>
+    <div class="topbar" id="topbar"></div>
+    <main id="main-content">
+      <div class="eyebrow">referensi — topology/</div>
+      <h1 class="page-title">Panduan Desain Topologi</h1>
+      <p class="page-sub">Rancang lab Packet Tracer yang rapi sebelum mulai ngetik CLI.</p>
+
+      <div class="panel">
+        <h2><span class="tag">diagram</span>Contoh topologi Router-on-a-Stick</h2>
+        <img src="../cisco/topology/sample-topology.svg" alt="Diagram contoh topologi lab dengan router, 2 switch, dan 4 PC di 2 VLAN berbeda" style="width:100%;border-radius:12px;border:1px solid var(--line);">
+      </div>
+
+      <div class="panel">
+        <div class="md" id="mdArea"></div>
+      </div>
+
+      <div class="panel">
+        <h2><span class="tag">tips</span>Menyimpan file .pkt kamu</h2>
+        <p>Taruh file Cisco Packet Tracer (<code>.pkt</code>) hasil kerja kamu langsung di folder
+        <code>/cisco/topology/</code> dengan penamaan konsisten, contoh:</p>
+        <div class="cli-window">
+          <div class="cli-bar"><span class="dots"><i></i><i></i><i></i></span><span>struktur penamaan disarankan</span></div>
+          <pre class="cli-body"><code>topology/
+  lab-01-basic.pkt
+  lab-02-vlan.pkt
+  lab-03-trunk.pkt
+  lab-04-intervlan.pkt
+  lab-05-dhcp.pkt
+  lab-06-acl.pkt
+  lab-07-routing.pkt
+  lab-08-troubleshooting.pkt</code></pre>
+        </div>
+      </div>
+    </main>
+    <footer class="site-foot">
+      File sumber: <code>/cisco/topology/topology-guide.md</code> &amp; <code>/cisco/topology/sample-topology.svg</code>
+    </footer>
+  </div>
+</div>
+<script src="../assets/js/main.js"></script>
+<script>
+  initPage("topology");
+  loadMarkdown("../cisco/topology/topology-guide.md", "#mdArea");
+</script>
+</body>
+</html>

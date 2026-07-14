@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#F5F1E4">
+<title>Contoh Konfigurasi — CiscoHub</title>
+<meta name="description" content="Template konfigurasi switch, router, dan gabungan 1 lab utuh yang siap disesuaikan.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2315130C'/%3E%3Ccircle cx='50' cy='50' r='16' fill='%23FFD400'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js" defer></script>
+</head>
+<body data-active="configs">
+<div class="grid-veil"></div>
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div>
+    <div class="topbar" id="topbar"></div>
+    <main id="main-content">
+      <div class="eyebrow">referensi — configs/</div>
+      <h1 class="page-title">Contoh Konfigurasi Siap Pakai</h1>
+      <p class="page-sub">Template lebih lengkap, gabungan beberapa topik — tinggal sesuaikan IP &amp; VLAN untuk lab kamu.</p>
+
+      <div class="panel">
+        <h2><span class="tag">pilih file</span>3 template tersedia</h2>
+        <div class="file-grid" id="fileList" style="margin-bottom:6px;">
+          <div class="file-card">
+            <span class="fname">switch-basic.cfg</span>
+            <p>Access layer switch: VLAN, voice VLAN, trunk uplink, management SVI.</p>
+            <a href="#" data-file="switch-basic.cfg" data-label="Access Switch">Lihat isi</a>
+          </div>
+          <div class="file-card">
+            <span class="fname">router-basic.cfg</span>
+            <p>Router gateway: subinterface VLAN, DHCP pool, default route.</p>
+            <a href="#" data-file="router-basic.cfg" data-label="Gateway Router">Lihat isi</a>
+          </div>
+          <div class="file-card">
+            <span class="fname">full-lab-topology.cfg</span>
+            <p>Gabungan 2 switch + 1 router untuk 1 lab utuh dari awal sampai akhir.</p>
+            <a href="#" data-file="full-lab-topology.cfg" data-label="Full Lab">Lihat isi</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2><span class="tag" id="activeLabel">switch-basic.cfg</span>Isi file</h2>
+        <div id="codeArea"></div>
+      </div>
+    </main>
+    <footer class="site-foot">
+      File sumber ada di folder <code>/cisco/configs/</code> — bisa langsung didownload dari GitHub repo.
+    </footer>
+  </div>
+</div>
+<script src="../assets/js/main.js"></script>
+<script>
+  initPage("configs");
+  function show(file, label){
+    loadCode("../cisco/configs/" + file, "#codeArea", "configs/" + file);
+    document.getElementById("activeLabel").textContent = file;
+  }
+  document.querySelectorAll("#fileList a").forEach(a=>{
+    a.addEventListener("click", (e)=>{
+      e.preventDefault();
+      show(a.dataset.file, a.dataset.label);
+    });
+  });
+  show("switch-basic.cfg","Access Switch");
+</script>
+</body>
+</html>

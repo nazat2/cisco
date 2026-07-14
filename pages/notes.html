@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#F5F1E4">
+<title>Cheat Sheet — CiscoHub</title>
+<meta name="description" content="Ringkasan semua perintah penting modul 01-08 dan tabel subnetting dalam satu halaman.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2315130C'/%3E%3Ccircle cx='50' cy='50' r='16' fill='%23FFD400'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js" defer></script>
+</head>
+<body data-active="notes">
+<div class="grid-veil"></div>
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div>
+    <div class="topbar" id="topbar"></div>
+    <main id="main-content">
+      <div class="eyebrow">referensi — notes/</div>
+      <h1 class="page-title">Cheat Sheet Perintah</h1>
+      <p class="page-sub">Semua perintah modul 01–08 diringkas satu halaman + tabel bantu subnetting.</p>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="cmd">Cheat Sheet Perintah</button>
+        <button class="tab-btn" data-tab="subnet">Tabel Subnetting</button>
+      </div>
+      <div>
+        <div class="tab-panel active" data-panel="cmd">
+          <div class="panel"><div class="md" id="mdCmd"></div></div>
+        </div>
+        <div class="tab-panel" data-panel="subnet">
+          <div class="panel"><div class="md" id="mdSubnet"></div></div>
+        </div>
+      </div>
+    </main>
+    <footer class="site-foot">
+      File sumber: <code>/cisco/notes/cheat-sheet.md</code> &amp; <code>/cisco/notes/subnetting-cheatsheet.md</code>
+    </footer>
+  </div>
+</div>
+<script src="../assets/js/main.js"></script>
+<script>
+  initPage("notes");
+  loadMarkdown("../cisco/notes/cheat-sheet.md", "#mdCmd");
+  loadMarkdown("../cisco/notes/subnetting-cheatsheet.md", "#mdSubnet");
+</script>
+</body>
+</html>
