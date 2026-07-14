@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#F5F1E4">
+<title>EtherChannel — CiscoHub</title>
+<meta name="description" content="Menggabungkan beberapa link fisik jadi 1 link logis.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2315130C'/%3E%3Ccircle cx='50' cy='50' r='16' fill='%23FFD400'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js" defer></script>
+</head>
+<body data-active="etherchannel">
+<div class="grid-veil"></div>
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <div>
+    <div class="topbar" id="topbar"></div>
+
+    <main id="main-content">
+      <div class="eyebrow">03_switch / modul 06 dari 19 — Gi0/6</div>
+      <h1 class="page-title">EtherChannel</h1>
+      <p class="page-sub">Menggabungkan beberapa link fisik jadi 1 link logis. &nbsp;&middot;&nbsp; <span id="progressBadge">0/4 tugas selesai</span></p>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="teori">Teori</button>
+        <button class="tab-btn" data-tab="config">Config CLI</button>
+        <button class="tab-btn" data-tab="checklist">Checklist Lab</button>
+      </div>
+
+      <div>
+        <div class="tab-panel active" data-panel="teori">
+          <div class="panel">
+            <div class="md" id="mdArea"></div>
+          </div>
+        </div>
+
+        <div class="tab-panel" data-panel="config">
+          <div class="panel">
+            <h2><span class="tag">config-sample.cfg</span>Contoh konfigurasi</h2>
+            <p class="muted" style="font-size:13px;margin-bottom:14px;">Salin lalu sesuaikan hostname/IP/VLAN dengan topologi labmu sendiri.</p>
+            <div id="codeArea"></div>
+          </div>
+        </div>
+
+        <div class="tab-panel" data-panel="checklist">
+          <div class="panel">
+            <h2><span class="tag">lab tasks</span>Checklist praktik</h2>
+            <ul class="checklist" data-module="etherchannel">
+              <li>
+                <input type="checkbox" id="etherchannel_t1" data-task="t1">
+                <label for="etherchannel_t1">
+                  <div class="task-title">Gabungkan 2 link jadi EtherChannel</div>
+                  <div class="task-desc">Konfigurasi channel-group mode active (LACP) di kedua switch.</div>
+                </label>
+              </li>
+              <li>
+                <input type="checkbox" id="etherchannel_t2" data-task="t2">
+                <label for="etherchannel_t2">
+                  <div class="task-title">Set trunk di Port-channel</div>
+                  <div class="task-desc">Pindahkan konfigurasi trunk ke interface port-channel, bukan per-fisik.</div>
+                </label>
+              </li>
+              <li>
+                <input type="checkbox" id="etherchannel_t3" data-task="t3">
+                <label for="etherchannel_t3">
+                  <div class="task-title">Cek status bundle</div>
+                  <div class="task-desc">Jalankan show etherchannel summary, pastikan status P (bundled) di semua port anggota.</div>
+                </label>
+              </li>
+              <li>
+                <input type="checkbox" id="etherchannel_t4" data-task="t4">
+                <label for="etherchannel_t4">
+                  <div class="task-title">Uji failover</div>
+                  <div class="task-desc">Putuskan (shutdown) salah satu link fisik, buktikan trafik tetap jalan lewat link sisanya.</div>
+                </label>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+        <a class="btn btn-ghost" href="05-stp.html">&larr; Modul 05: STP</a>
+        <a class="btn btn-primary" href="07-portsecurity.html">Modul 07: Port Security &rarr;</a>
+      </div>
+    </main>
+
+    <footer class="site-foot">
+      Materi mentah modul ini ada di <code>/cisco/03_switch/etherchannel/</code> (notes.md, config-sample.cfg, README.md) — bisa dibaca langsung di GitHub.
+    </footer>
+  </div>
+</div>
+
+<script src="../assets/js/main.js"></script>
+<script>
+  initPage("etherchannel");
+  loadMarkdown("../cisco/03_switch/etherchannel/notes.md", "#mdArea");
+  loadCode("../cisco/03_switch/etherchannel/config-sample.cfg", "#codeArea", "etherchannel/config-sample.cfg");
+  initChecklist("etherchannel");
+</script>
+</body>
+</html>

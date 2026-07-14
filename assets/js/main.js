@@ -10,18 +10,49 @@ const BASE = (() => {
   return path.includes("/pages/") ? "../" : "./";
 })();
 
-const MODULES = [
-  { id: "01_basic",         num: "01", label: "Basic CLI",        port: "Gi0/1", page: "01-basic.html" },
-  { id: "02_vlan",          num: "02", label: "VLAN",             port: "Gi0/2", page: "02-vlan.html" },
-  { id: "03_trunk",         num: "03", label: "Trunking",         port: "Gi0/3", page: "03-trunk.html" },
-  { id: "04_intervlan",     num: "04", label: "Inter-VLAN",       port: "Gi0/4", page: "04-intervlan.html" },
-  { id: "05_dhcp",          num: "05", label: "DHCP",             port: "Gi0/5", page: "05-dhcp.html" },
-  { id: "06_acl",           num: "06", label: "ACL",              port: "Gi0/6", page: "06-acl.html" },
-  { id: "07_routing",       num: "07", label: "Routing",          port: "Gi0/7", page: "07-routing.html" },
-  { id: "08_troubleshooting", num: "08", label: "Troubleshooting", port: "Gi0/8", page: "08-troubleshooting.html" },
+// FOLDERS = the 7 top-level "folder" groups shown in the sidebar tree.
+// Each folder can be expanded/collapsed to reveal the modules (files) inside.
+const FOLDERS = [
+  { id: "01_basic", label: "01_basic", title: "Dasar CLI", modules: ["basic"] },
+  { id: "02_vlan", label: "02_vlan", title: "VLAN & Trunking", modules: ["vlan", "trunk", "intervlan"] },
+  { id: "03_switch", label: "03_switch", title: "Switching Lanjutan", modules: ["stp", "etherchannel", "portsecurity"] },
+  { id: "04_routing", label: "04_routing", title: "Routing", modules: ["staticroute", "rip", "ospf", "eigrp"] },
+  { id: "05_services", label: "05_services", title: "Network Services", modules: ["dhcp", "dns", "nat", "acl"] },
+  { id: "06_wan", label: "06_wan", title: "WAN", modules: ["serial", "ppp", "framerelay"] },
+  { id: "07_project", label: "07_project", title: "Capstone", modules: ["project"] },
 ];
 
+// MODULES = flat list of every module ("file") across all folders, in the
+// order they should be studied. Used for progress tracking, prev/next nav,
+// and the home page rack grid.
+const MODULES = [
+  { id: "basic", num: "01", label: "Basic", port: "Gi0/1", page: "01-basic.html", desc: "Mode CLI, navigasi perintah, hostname, password, dan penyimpanan konfigurasi." },
+  { id: "vlan", num: "02", label: "VLAN", port: "Gi0/2", page: "02-vlan.html", desc: "Segmentasi jaringan logis dengan VLAN pada switch." },
+  { id: "trunk", num: "03", label: "Trunk", port: "Gi0/3", page: "03-trunk.html", desc: "Menghubungkan antar-switch membawa banyak VLAN sekaligus." },
+  { id: "intervlan", num: "04", label: "Inter VLAN Routing", port: "Gi0/4", page: "04-intervlan.html", desc: "Routing antar VLAN memakai router-on-a-stick / SVI." },
+  { id: "stp", num: "05", label: "STP", port: "Gi0/5", page: "05-stp.html", desc: "Mencegah loop Layer 2 dengan Spanning Tree Protocol." },
+  { id: "etherchannel", num: "06", label: "EtherChannel", port: "Gi0/6", page: "06-etherchannel.html", desc: "Menggabungkan beberapa link fisik jadi 1 link logis." },
+  { id: "portsecurity", num: "07", label: "Port Security", port: "Gi0/7", page: "07-portsecurity.html", desc: "Membatasi MAC address yang boleh terhubung ke access port." },
+  { id: "staticroute", num: "08", label: "Static Route", port: "Gi0/8", page: "08-static-route.html", desc: "Membuat jalur routing manual untuk jaringan kecil/stabil." },
+  { id: "rip", num: "09", label: "RIP", port: "Gi0/9", page: "09-rip.html", desc: "Routing dinamis distance-vector paling sederhana." },
+  { id: "ospf", num: "10", label: "OSPF", port: "Gi0/10", page: "10-ospf.html", desc: "Routing dinamis link-state untuk jaringan menengah-besar." },
+  { id: "eigrp", num: "11", label: "EIGRP", port: "Gi0/11", page: "11-eigrp.html", desc: "Routing dinamis hybrid dengan konvergensi sangat cepat (DUAL)." },
+  { id: "dhcp", num: "12", label: "DHCP", port: "Gi0/12", page: "12-dhcp.html", desc: "Alokasi IP otomatis untuk host di jaringan." },
+  { id: "dns", num: "13", label: "DNS", port: "Gi0/13", page: "13-dns.html", desc: "Menerjemahkan nama domain/hostname menjadi alamat IP." },
+  { id: "nat", num: "14", label: "NAT", port: "Gi0/14", page: "14-nat.html", desc: "Menerjemahkan IP privat ke IP publik agar bisa akses internet." },
+  { id: "acl", num: "15", label: "ACL", port: "Gi0/15", page: "15-acl.html", desc: "Menyaring trafik dengan Access Control List." },
+  { id: "serial", num: "16", label: "Serial", port: "Gi0/16", page: "16-serial.html", desc: "Koneksi WAN point-to-point dasar antar router." },
+  { id: "ppp", num: "17", label: "PPP", port: "Gi0/17", page: "17-ppp.html", desc: "Encapsulation WAN dengan autentikasi PAP/CHAP." },
+  { id: "framerelay", num: "18", label: "Frame Relay (opsional)", port: "Gi0/18", page: "18-framerelay.html", desc: "Teknologi WAN legacy berbasis switched virtual circuit — materi opsional." },
+  { id: "project", num: "19", label: "Simulasi Jaringan Perusahaan", port: "Gi0/19", page: "19-project.html", desc: "Proyek akhir: gabungkan semua modul jadi 1 topologi kantor utuh." },
+];
+const MODULE_BY_ID = Object.fromEntries(MODULES.map(m => [m.id, m]));
+function folderOf(moduleId) {
+  return FOLDERS.find(fo => fo.modules.includes(moduleId));
+}
+
 const EXTRA_NAV = [
+  { id: "08_troubleshooting", label: "Troubleshooting", page: "08-troubleshooting.html", icon: "🛠" },
   { id: "notes", label: "Cheat Sheet", page: "notes.html", icon: "📒" },
   { id: "configs", label: "Config Samples", page: "configs.html", icon: "🗂" },
   { id: "topology", label: "Topology Lab", page: "topology.html", icon: "🧭" },
@@ -45,21 +76,60 @@ function moduleStatus(moduleId, totalTasks) {
   return "progress";
 }
 /* ---------------- Shell rendering ---------------- */
+const OPEN_FOLDERS_KEY = "cisco-open-folders";
+function getOpenFolders() {
+  try {
+    const raw = localStorage.getItem(OPEN_FOLDERS_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch (e) { return null; }
+}
+function setOpenFolders(arr) {
+  try { localStorage.setItem(OPEN_FOLDERS_KEY, JSON.stringify(arr)); } catch (e) {}
+}
+
 function renderShell(activeId) {
   const sidebarEl = document.getElementById("sidebar");
   const topbarEl = document.getElementById("topbar");
   if (!sidebarEl || !topbarEl) return;
 
-  const modulePorts = MODULES.map(m => {
-    const meta = JSON.parse(localStorage.getItem("cisco-meta-" + m.id) || "null");
-    const total = meta ? meta.total : 0;
-    const status = moduleStatus(m.id, total);
-    const active = activeId === m.id ? "active" : "";
-    return `<a class="port ${active}" href="${BASE}pages/${m.page}">
-      <span class="port-num">${m.num}</span>
-      <span class="led ${status === "off" ? "" : status}"></span>
-      <span class="port-label">${m.label}</span>
-    </a>`;
+  const activeFolder = folderOf(activeId);
+  let openFolders = getOpenFolders();
+  if (!openFolders) {
+    // First visit: open only the folder containing the current page.
+    openFolders = activeFolder ? [activeFolder.id] : [];
+  } else if (activeFolder && !openFolders.includes(activeFolder.id)) {
+    // Always make sure the folder holding the active page is visible.
+    openFolders = openFolders.concat([activeFolder.id]);
+  }
+
+  const folderHtml = FOLDERS.map(fo => {
+    const isOpen = openFolders.includes(fo.id);
+    const doneCount = fo.modules.filter(mid => {
+      const meta = JSON.parse(localStorage.getItem("cisco-meta-" + mid) || "null");
+      const total = meta ? meta.total : 0;
+      return total && getProgress(mid).length >= total;
+    }).length;
+    const fileRows = fo.modules.map(mid => {
+      const m = MODULE_BY_ID[mid];
+      const meta = JSON.parse(localStorage.getItem("cisco-meta-" + mid) || "null");
+      const total = meta ? meta.total : 0;
+      const status = moduleStatus(mid, total);
+      const active = activeId === mid ? "active" : "";
+      return `<a class="port file-port ${active}" href="${BASE}pages/${m.page}" data-mid="${mid}">
+        <span class="file-icon" aria-hidden="true">📄</span>
+        <span class="led ${status === "off" ? "" : status}"></span>
+        <span class="port-label">${m.label}</span>
+      </a>`;
+    }).join("");
+    return `<div class="folder ${isOpen ? "open" : ""}" data-folder="${fo.id}">
+      <button type="button" class="folder-header" aria-expanded="${isOpen ? "true" : "false"}">
+        <span class="folder-chevron" aria-hidden="true">▸</span>
+        <span class="folder-icon" aria-hidden="true">${isOpen ? "📂" : "📁"}</span>
+        <span class="folder-label">${fo.label}<i>${fo.title}</i></span>
+        <span class="folder-count">${doneCount}/${fo.modules.length}</span>
+      </button>
+      <div class="folder-body"><div class="folder-body-inner">${fileRows}</div></div>
+    </div>`;
   }).join("");
 
   const extraPorts = EXTRA_NAV.map(e => {
@@ -82,8 +152,8 @@ function renderShell(activeId) {
     <a class="port ${activeId === "home" ? "active" : ""}" href="${BASE}index.html">
       <span class="port-num">•</span><span class="port-label">Overview</span>
     </a>
-    <div class="nav-group-label">Modul Praktik (rack)</div>
-    ${modulePorts}
+    <div class="nav-group-label">Modul Praktik (folder)</div>
+    <div class="folder-tree" id="folderTree">${folderHtml}</div>
     <div class="nav-group-label">Referensi</div>
     ${extraPorts}
     <div class="sidebar-foot">
@@ -98,6 +168,26 @@ function renderShell(activeId) {
       </a>
     </div>
   `;
+
+  // Folder open/close toggle
+  sidebarEl.querySelectorAll(".folder").forEach(folderEl => {
+    const fid = folderEl.dataset.folder;
+    const header = folderEl.querySelector(".folder-header");
+    const icon = folderEl.querySelector(".folder-icon");
+    header.addEventListener("click", () => {
+      const nowOpen = !folderEl.classList.contains("open");
+      folderEl.classList.toggle("open", nowOpen);
+      header.setAttribute("aria-expanded", nowOpen ? "true" : "false");
+      icon.textContent = nowOpen ? "📂" : "📁";
+      let current = getOpenFolders() || [];
+      if (nowOpen) {
+        if (!current.includes(fid)) current = current.concat([fid]);
+      } else {
+        current = current.filter(id => id !== fid);
+      }
+      setOpenFolders(current);
+    });
+  });
 
   topbarEl.innerHTML = `
     <button class="hamburger" id="hamburgerBtn" aria-label="Buka menu">☰</button>
@@ -183,7 +273,7 @@ async function loadMarkdown(url, targetSelector) {
         wrap.appendChild(table);
       });
     } else {
-      el.innerHTML = `<pre>${escapeHtml(text)}</pre>`;
+      el.innerHTML = `<pre class="md-fallback">${escapeHtml(text)}</pre>`;
     }
   } catch (err) {
     el.innerHTML = `<div class="callout danger">
@@ -315,34 +405,30 @@ function updateModuleBadge(moduleId, total) {
 function renderRackGrid(targetSelector) {
   const el = document.querySelector(targetSelector);
   if (!el) return;
-  el.innerHTML = MODULES.map(m => {
-    const meta = JSON.parse(localStorage.getItem("cisco-meta-" + m.id) || "null");
-    const total = meta ? meta.total : 0;
-    const done = getProgress(m.id).length;
-    const status = moduleStatus(m.id, total);
-    const statusText = status === "done" ? "SELESAI" : status === "progress" ? `${done}/${total} tugas` : "BELUM MULAI";
-    return `<a class="rack-card" href="${BASE}pages/${m.page}">
-      <div class="rc-top">
-        <span class="rc-num">${m.port}</span>
-        <span class="led ${status === "off" ? "" : status}"></span>
-      </div>
-      <h3>${m.num} — ${m.label}</h3>
-      <p>${MODULE_DESC[m.id] || ""}</p>
-      <span class="rc-status">${statusText}</span>
-    </a>`;
+  el.innerHTML = FOLDERS.map(fo => {
+    const cards = fo.modules.map(mid => {
+      const m = MODULE_BY_ID[mid];
+      const meta = JSON.parse(localStorage.getItem("cisco-meta-" + m.id) || "null");
+      const total = meta ? meta.total : 0;
+      const done = getProgress(m.id).length;
+      const status = moduleStatus(m.id, total);
+      const statusText = status === "done" ? "SELESAI" : status === "progress" ? `${done}/${total} tugas` : "BELUM MULAI";
+      return `<a class="rack-card" href="${BASE}pages/${m.page}">
+        <div class="rc-top">
+          <span class="rc-num">${m.port}</span>
+          <span class="led ${status === "off" ? "" : status}"></span>
+        </div>
+        <h3>${m.num} — ${m.label}</h3>
+        <p>${m.desc}</p>
+        <span class="rc-status">${statusText}</span>
+      </a>`;
+    }).join("");
+    return `<div class="folder-section">
+      <div class="folder-section-head"><span class="fsh-icon">📁</span> ${fo.label} <i>${fo.title}</i></div>
+      <div class="rack-grid">${cards}</div>
+    </div>`;
   }).join("");
 }
-
-const MODULE_DESC = {
-  "01_basic": "Mode CLI, navigasi perintah, hostname, password, dan penyimpanan konfigurasi.",
-  "02_vlan": "Segmentasi jaringan logis dengan VLAN pada switch.",
-  "03_trunk": "Menghubungkan antar-switch membawa banyak VLAN sekaligus.",
-  "04_intervlan": "Routing antar VLAN memakai router-on-a-stick / SVI.",
-  "05_dhcp": "Alokasi IP otomatis untuk host di jaringan.",
-  "06_acl": "Menyaring trafik dengan Access Control List.",
-  "07_routing": "Static route & dynamic routing dasar (RIP/OSPF).",
-  "08_troubleshooting": "Metodologi & perintah diagnosa masalah jaringan.",
-};
 
 /* ---------------- Terminal boot animation on hero ---------------- */
 function bootTerminal(targetSelector, lines, opts = {}) {

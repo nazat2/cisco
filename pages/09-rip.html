@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#F5F1E4">
+<title>RIP — CiscoHub</title>
+<meta name="description" content="Routing dinamis distance-vector paling sederhana.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2315130C'/%3E%3Ccircle cx='50' cy='50' r='16' fill='%23FFD400'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js" defer></script>
+</head>
+<body data-active="rip">
+<div class="grid-veil"></div>
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <div>
+    <div class="topbar" id="topbar"></div>
+
+    <main id="main-content">
+      <div class="eyebrow">04_routing / modul 09 dari 19 — Gi0/9</div>
+      <h1 class="page-title">RIP</h1>
+      <p class="page-sub">Routing dinamis distance-vector paling sederhana. &nbsp;&middot;&nbsp; <span id="progressBadge">0/4 tugas selesai</span></p>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="teori">Teori</button>
+        <button class="tab-btn" data-tab="config">Config CLI</button>
+        <button class="tab-btn" data-tab="checklist">Checklist Lab</button>
+      </div>
+
+      <div>
+        <div class="tab-panel active" data-panel="teori">
+          <div class="panel">
+            <div class="md" id="mdArea"></div>
+          </div>
+        </div>
+
+        <div class="tab-panel" data-panel="config">
+          <div class="panel">
+            <h2><span class="tag">config-sample.cfg</span>Contoh konfigurasi</h2>
+            <p class="muted" style="font-size:13px;margin-bottom:14px;">Salin lalu sesuaikan hostname/IP/VLAN dengan topologi labmu sendiri.</p>
+            <div id="codeArea"></div>
+          </div>
+        </div>
+
+        <div class="tab-panel" data-panel="checklist">
+          <div class="panel">
+            <h2><span class="tag">lab tasks</span>Checklist praktik</h2>
+            <ul class="checklist" data-module="rip">
+              <li>
+                <input type="checkbox" id="rip_t1" data-task="t1">
+                <label for="rip_t1">
+                  <div class="task-title">Aktifkan RIPv2</div>
+                  <div class="task-desc">Jalankan router rip, version 2, dan daftarkan semua network langsung.</div>
+                </label>
+              </li>
+              <li>
+                <input type="checkbox" id="rip_t2" data-task="t2">
+                <label for="rip_t2">
+                  <div class="task-title">Matikan auto-summary</div>
+                  <div class="task-desc">Pastikan no auto-summary aktif di jaringan dengan VLSM.</div>
+                </label>
+              </li>
+              <li>
+                <input type="checkbox" id="rip_t3" data-task="t3">
+                <label for="rip_t3">
+                  <div class="task-title">Set passive-interface</div>
+                  <div class="task-desc">Tandai interface LAN yang tidak perlu kirim update RIP.</div>
+                </label>
+              </li>
+              <li>
+                <input type="checkbox" id="rip_t4" data-task="t4">
+                <label for="rip_t4">
+                  <div class="task-title">Verifikasi rute RIP</div>
+                  <div class="task-desc">Jalankan show ip route rip di router tetangga, pastikan network jauh muncul dengan kode R.</div>
+                </label>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+        <a class="btn btn-ghost" href="08-static-route.html">&larr; Modul 08: Static Route</a>
+        <a class="btn btn-primary" href="10-ospf.html">Modul 10: OSPF &rarr;</a>
+      </div>
+    </main>
+
+    <footer class="site-foot">
+      Materi mentah modul ini ada di <code>/cisco/04_routing/rip/</code> (notes.md, config-sample.cfg, README.md) — bisa dibaca langsung di GitHub.
+    </footer>
+  </div>
+</div>
+
+<script src="../assets/js/main.js"></script>
+<script>
+  initPage("rip");
+  loadMarkdown("../cisco/04_routing/rip/notes.md", "#mdArea");
+  loadCode("../cisco/04_routing/rip/config-sample.cfg", "#codeArea", "rip/config-sample.cfg");
+  initChecklist("rip");
+</script>
+</body>
+</html>

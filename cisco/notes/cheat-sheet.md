@@ -59,7 +59,90 @@ interface vlan10
 show ip route
 ```
 
-## 05 — DHCP
+## 05 — STP
+
+```
+spanning-tree mode rapid-pvst
+spanning-tree vlan 1 priority 4096
+
+interface fastEthernet 0/1
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+
+show spanning-tree
+show spanning-tree vlan 10
+```
+
+## 06 — EtherChannel
+
+```
+interface range fastEthernet 0/1 - 2
+ channel-group 1 mode active   ! LACP
+
+interface port-channel 1
+ switchport mode trunk
+
+show etherchannel summary
+```
+
+## 07 — Port Security
+
+```
+interface fastEthernet 0/1
+ switchport mode access
+ switchport port-security
+ switchport port-security maximum 2
+ switchport port-security mac-address sticky
+ switchport port-security violation shutdown
+
+show port-security interface fa0/1
+```
+
+## 08 — Static Route
+
+```
+ip route <network> <mask> <next-hop>
+ip route 0.0.0.0 0.0.0.0 <next-hop>        ! default route
+ip route <network> <mask> <next-hop> 200   ! floating static (AD custom)
+
+show ip route static
+```
+
+## 09 — RIP
+
+```
+router rip
+ version 2
+ network 192.168.10.0
+ no auto-summary
+
+show ip protocols
+show ip route rip
+```
+
+## 10 — OSPF
+
+```
+router ospf 1
+ router-id 1.1.1.1
+ network 192.168.10.0 0.0.0.255 area 0
+
+show ip route ospf
+show ip ospf neighbor
+```
+
+## 11 — EIGRP
+
+```
+router eigrp 100
+ network 192.168.10.0 0.0.0.255
+ no auto-summary
+
+show ip eigrp neighbors
+show ip route eigrp
+```
+
+## 12 — DHCP
 
 ```
 ip dhcp excluded-address 192.168.10.1 192.168.10.10
@@ -76,7 +159,31 @@ show ip dhcp binding
 show ip dhcp pool
 ```
 
-## 06 — ACL
+## 13 — DNS
+
+```
+ip domain-lookup
+ip name-server 8.8.8.8
+ip host server1.kantor.local 192.168.10.10
+
+show hosts
+```
+
+## 14 — NAT
+
+```
+interface gigabitEthernet 0/0
+ ip nat inside
+interface gigabitEthernet 0/1
+ ip nat outside
+
+access-list 1 permit 192.168.10.0 0.0.0.255
+ip nat inside source list 1 interface gigabitEthernet 0/1 overload   ! PAT
+
+show ip nat translations
+```
+
+## 15 — ACL
 
 ```
 ! Standard (dekat destination)
@@ -95,21 +202,49 @@ show access-lists
 show ip interface gi0/0
 ```
 
-## 07 — Routing
+## 16 — Serial
 
 ```
-ip route <network> <mask> <next-hop>
-ip route 0.0.0.0 0.0.0.0 <next-hop>   ! default route
+interface serial 0/0/0
+ clock rate 64000        ! hanya sisi DCE
+ bandwidth 64
+ no shutdown
 
-router ospf 1
- network 192.168.10.0 0.0.0.255 area 0
-
-show ip route
-show ip protocols
-show ip ospf neighbor
+show interfaces serial 0/0/0
+show controllers serial 0/0/0
 ```
 
-## 08 — Troubleshooting
+## 17 — PPP
+
+```
+username R2 password cisco123
+
+interface serial 0/0/0
+ encapsulation ppp
+ ppp authentication chap
+
+show interfaces serial 0/0/0
+```
+
+## 18 — Frame Relay (opsional)
+
+```
+interface serial 0/0/0
+ encapsulation frame-relay
+
+interface serial 0/0/0.102 point-to-point
+ ip address 10.0.12.1 255.255.255.252
+ frame-relay interface-dlci 102
+
+show frame-relay pvc
+```
+
+## 19 — Simulasi Jaringan Perusahaan
+
+Gabungan seluruh modul di atas dalam 1 topologi. Lihat halaman modul 19
+untuk rencana pengalamatan dan urutan pengerjaan lengkap.
+
+## Troubleshooting (referensi)
 
 ```
 show ip interface brief

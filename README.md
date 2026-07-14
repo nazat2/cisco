@@ -11,7 +11,8 @@ langsung karena browser memblokir `fetch()` file lokal via `file://`).
 
 ## ✨ Fitur
 
-- 8 modul praktik terstruktur (CLI dasar → VLAN → trunk → inter-VLAN → DHCP → ACL → routing → troubleshooting)
+- 19 modul praktik dalam 7 folder terstruktur (01_basic → 02_vlan → 03_switch → 04_routing → 05_services → 06_wan → 07_project)
+- Sidebar folder-tree yang bisa dibuka/tutup (accordion) per kategori, mengikuti struktur folder asli di `cisco/`
 - Tiap modul: tab **Teori**, **Config CLI** (dengan tombol copy), dan **Checklist Lab**
 - Progress checklist tersimpan otomatis per-browser (localStorage), ditampilkan sebagai LED di sidebar & progress bar di topbar
 - Cheat sheet semua perintah + tabel subnetting dalam 1 halaman
@@ -30,34 +31,35 @@ langsung karena browser memblokir `fetch()` file lokal via `file://`).
 │
 ├── assets/
 │   ├── css/style.css          # Design system (1 file, semua styling)
-│   ├── js/main.js             # Sidebar, loader markdown/config, checklist, tabs
+│   ├── js/main.js             # Sidebar folder-tree, loader markdown/config, checklist, tabs
 │   └── img/                   # (kosong, siap untuk aset tambahan)
 │
-├── pages/                     # Semua halaman modul & referensi
+├── pages/                     # Semua halaman modul & referensi (19 modul + referensi)
 │   ├── 01-basic.html
-│   ├── 02-vlan.html
-│   ├── 03-trunk.html
-│   ├── 04-intervlan.html
-│   ├── 05-dhcp.html
-│   ├── 06-acl.html
-│   ├── 07-routing.html
-│   ├── 08-troubleshooting.html
-│   ├── notes.html              # Cheat sheet
-│   ├── configs.html            # Contoh konfigurasi siap pakai
-│   └── topology.html           # Panduan desain topologi
+│   ├── 02-vlan.html / 03-trunk.html / 04-intervlan.html
+│   ├── 05-stp.html / 06-etherchannel.html / 07-portsecurity.html
+│   ├── 08-static-route.html / 09-rip.html / 10-ospf.html / 11-eigrp.html
+│   ├── 12-dhcp.html / 13-dns.html / 14-nat.html / 15-acl.html
+│   ├── 16-serial.html / 17-ppp.html / 18-framerelay.html
+│   ├── 19-project.html
+│   ├── 08-troubleshooting.html, notes.html, configs.html, topology.html, shortcuts.html
 │
 └── cisco/                     # 📚 MATERI MENTAH — sumber tunggal (single source of truth)
     ├── 01_basic/
-    │   ├── README.md            # Penjelasan tujuan folder
-    │   ├── notes.md              # Teori (dirender di tab "Teori")
-    │   └── config-sample.cfg     # Contoh config (dirender di tab "Config CLI")
-    ├── 02_vlan/        ...sama polanya...
-    ├── 03_trunk/       ...
-    ├── 04_intervlan/   ...
-    ├── 05_dhcp/        ...
-    ├── 06_acl/         ...
-    ├── 07_routing/     ...
-    ├── 08_troubleshooting/ ...
+    │   └── basic/                # README.md, notes.md, config-sample.cfg
+    ├── 02_vlan/
+    │   ├── vlan/ trunk/ intervlan/
+    ├── 03_switch/
+    │   ├── stp/ etherchannel/ portsecurity/
+    ├── 04_routing/
+    │   ├── staticroute/ rip/ ospf/ eigrp/
+    ├── 05_services/
+    │   ├── dhcp/ dns/ nat/ acl/
+    ├── 06_wan/
+    │   ├── serial/ ppp/ framerelay/
+    ├── 07_project/
+    │   └── project/
+    ├── 08_troubleshooting/        # referensi tambahan (di luar 7 folder utama)
     │
     ├── configs/                 # Template konfigurasi siap pakai (lintas topik)
     ├── notes/                   # Cheat sheet & tabel subnetting
@@ -113,9 +115,10 @@ polos, jadi deploy-nya instan dan ringan.
 
 Tema "network operations console" — palet biru gelap ala blueprint dengan
 aksen cyan/amber meniru lampu status port switch. Sidebar didesain sebagai
-"rack" berisi port bernomor (Gi0/1–Gi0/8) yang LED-nya berubah warna sesuai
-progres checklist tiap modul. Font: **Space Grotesk** (judul), **Inter**
-(teks), **JetBrains Mono** (kode & data teknis).
+folder-tree (accordion, mengikuti struktur `cisco/`) berisi port bernomor
+(Gi0/1–Gi0/19) yang LED-nya berubah warna sesuai progres checklist tiap
+modul. Font: **Space Grotesk** (judul), **Inter** (teks), **JetBrains Mono**
+(kode & data teknis).
 
 ## 🧩 Tech stack
 

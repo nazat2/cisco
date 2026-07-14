@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#F5F1E4">
+<title>EIGRP — CiscoHub</title>
+<meta name="description" content="Routing dinamis hybrid dengan konvergensi sangat cepat (DUAL).">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2315130C'/%3E%3Ccircle cx='50' cy='50' r='16' fill='%23FFD400'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js" defer></script>
+</head>
+<body data-active="eigrp">
+<div class="grid-veil"></div>
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <div>
+    <div class="topbar" id="topbar"></div>
+
+    <main id="main-content">
+      <div class="eyebrow">04_routing / modul 11 dari 19 — Gi0/11</div>
+      <h1 class="page-title">EIGRP</h1>
+      <p class="page-sub">Routing dinamis hybrid dengan konvergensi sangat cepat (DUAL). &nbsp;&middot;&nbsp; <span id="progressBadge">0/4 tugas selesai</span></p>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="teori">Teori</button>
+        <button class="tab-btn" data-tab="config">Config CLI</button>
+        <button class="tab-btn" data-tab="checklist">Checklist Lab</button>
+      </div>
+
+      <div>
+        <div class="tab-panel active" data-panel="teori">
+          <div class="panel">
+            <div class="md" id="mdArea"></div>
+          </div>
+        </div>
+
+        <div class="tab-panel" data-panel="config">
+          <div class="panel">
+            <h2><span class="tag">config-sample.cfg</span>Contoh konfigurasi</h2>
+            <p class="muted" style="font-size:13px;margin-bottom:14px;">Salin lalu sesuaikan hostname/IP/VLAN dengan topologi labmu sendiri.</p>
+            <div id="codeArea"></div>
+          </div>
+        </div>
+
+        <div class="tab-panel" data-panel="checklist">
+          <div class="panel">
+            <h2><span class="tag">lab tasks</span>Checklist praktik</h2>
+            <ul class="checklist" data-module="eigrp">
+              <li>
+                <input type="checkbox" id="eigrp_t1" data-task="t1">
+                <label for="eigrp_t1">
+                  <div class="task-title">Aktifkan EIGRP AS 100</div>
+                  <div class="task-desc">Jalankan router eigrp 100 dengan network statement wildcard mask di semua router.</div>
+                </label>
+              </li>
+              <li>
+                <input type="checkbox" id="eigrp_t2" data-task="t2">
+                <label for="eigrp_t2">
+                  <div class="task-title">Samakan AS number</div>
+                  <div class="task-desc">Pastikan semua router pakai AS number yang sama persis.</div>
+                </label>
+              </li>
+              <li>
+                <input type="checkbox" id="eigrp_t3" data-task="t3">
+                <label for="eigrp_t3">
+                  <div class="task-title">Cek neighbor terbentuk</div>
+                  <div class="task-desc">Verifikasi show ip eigrp neighbors di semua router.</div>
+                </label>
+              </li>
+              <li>
+                <input type="checkbox" id="eigrp_t4" data-task="t4">
+                <label for="eigrp_t4">
+                  <div class="task-title">Lihat successor &amp; feasible successor</div>
+                  <div class="task-desc">Jalankan show ip eigrp topology dan identifikasi jalur backup.</div>
+                </label>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+        <a class="btn btn-ghost" href="10-ospf.html">&larr; Modul 10: OSPF</a>
+        <a class="btn btn-primary" href="12-dhcp.html">Modul 12: DHCP &rarr;</a>
+      </div>
+    </main>
+
+    <footer class="site-foot">
+      Materi mentah modul ini ada di <code>/cisco/04_routing/eigrp/</code> (notes.md, config-sample.cfg, README.md) — bisa dibaca langsung di GitHub.
+    </footer>
+  </div>
+</div>
+
+<script src="../assets/js/main.js"></script>
+<script>
+  initPage("eigrp");
+  loadMarkdown("../cisco/04_routing/eigrp/notes.md", "#mdArea");
+  loadCode("../cisco/04_routing/eigrp/config-sample.cfg", "#codeArea", "eigrp/config-sample.cfg");
+  initChecklist("eigrp");
+</script>
+</body>
+</html>
