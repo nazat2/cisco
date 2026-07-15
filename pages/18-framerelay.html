@@ -30,6 +30,7 @@
         <button class="tab-btn active" data-tab="teori">Teori</button>
         <button class="tab-btn" data-tab="config">Config CLI</button>
         <button class="tab-btn" data-tab="checklist">Checklist Lab</button>
+        <button class="tab-btn" data-tab="topology">Topologi</button>
       </div>
 
       <div>
@@ -82,6 +83,19 @@
             </ul>
           </div>
         </div>
+
+        <div class="tab-panel" data-panel="topology">
+          <div class="panel">
+            <h2><span class="tag">diagram</span>Topologi Rekomendasi</h2>
+            <p class="muted" style="font-size:13px;margin-bottom:14px;">Diagram di bawah otomatis dibuat dari daftar perangkat &mdash; scroll ke samping di layar kecil kalau diagramnya lebar.</p>
+            <div id="topoDiagram"></div>
+          </div>
+          <div class="panel">
+            <h2><span class="tag">devices</span>Rekomendasi Perangkat</h2>
+            <p class="muted" style="font-size:13px;margin-bottom:14px;">Tipe/model perangkat Packet Tracer yang disarankan dan jumlahnya untuk modul ini.</p>
+            <div id="topoDevices"></div>
+          </div>
+        </div>
       </div>
 
       <div class="panel" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
@@ -97,8 +111,10 @@
 </div>
 
 <script src="../assets/js/main.js"></script>
+<script src="../assets/js/topology.js"></script>
 <script>
   initPage("framerelay");
+  renderTopology("framerelay");
   loadMarkdown("../cisco/06_wan/framerelay/notes.md", "#mdArea");
   loadCode("../cisco/06_wan/framerelay/config-sample.cfg", "#codeArea", "framerelay/config-sample.cfg");
   initChecklist("framerelay");

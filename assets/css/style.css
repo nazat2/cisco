@@ -570,6 +570,36 @@ footer.site-foot a:hover{background:var(--cyan-2);}
   padding:5px 10px;border-radius:5px;text-decoration:none;font-weight:700;background:var(--yellow);transition:transform .1s;}
 .file-card a:hover{transform:translate(-1px,-1px);}
 
+/* ---------------- Topologi tab (device table + diagram) ---------------- */
+.topo-table{width:100%;min-width:560px;border-collapse:collapse;font-size:13px;border:2px solid var(--line);}
+.topo-table th,.topo-table td{border:1.5px solid var(--line);padding:9px 10px;text-align:left;vertical-align:middle;}
+.topo-table th{background:var(--yellow);font-family:var(--font-mono);font-size:11.5px;color:var(--line);font-weight:700;white-space:nowrap;}
+.topo-table td:first-child{white-space:nowrap;font-weight:600;}
+.topo-table code{background:var(--cyan-2);padding:2px 6px;border-radius:4px;font-size:12px;color:var(--line);border:1.5px solid var(--line);white-space:nowrap;}
+.topo-qty{font-family:var(--font-mono);font-weight:700;color:var(--line);text-align:center;}
+@media (max-width:600px){
+  .topo-table{font-size:12px;}
+  .topo-table th,.topo-table td{padding:7px 8px;}
+}
+
+.topo-chip{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:24px;height:24px;border-radius:6px;border:1.5px solid var(--line);
+  background:var(--panel-2);font-size:13px;line-height:1;margin-right:4px;flex:none;
+}
+
+.topo-diagram{
+  overflow-x:auto;-webkit-overflow-scrolling:touch;
+  border:2px solid var(--line);border-radius:var(--radius-lg);
+  background:var(--panel-2);padding:16px;box-shadow:var(--shadow-sm);
+}
+.topo-diagram-inner svg{display:block;width:100%;height:auto;}
+.topo-legend{
+  display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:14px;
+  font-family:var(--font-mono);font-size:11.5px;color:var(--muted);
+}
+.topo-legend-item{display:inline-flex;align-items:center;gap:6px;}
+
 /* ---------------- Global responsive refinements ---------------- */
 @media (max-width:920px){
   main{padding-top:22px;}
